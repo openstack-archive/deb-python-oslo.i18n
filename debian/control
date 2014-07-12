@@ -25,7 +25,8 @@ Build-Conflicts: python-oslo.config,
                  python-oslo.messaging,
                  python-oslo.rootwrap,
                  python-oslo.sphinx,
-                 python-oslo.vmware
+                 python-oslo.vmware,
+                 python3-oslo.config
 Standards-Version: 3.9.5
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=openstack/python-oslo.i18n.git
 Vcs-Git: git://anonscm.debian.org/openstack/python-oslo.i18n.git
