@@ -1,0 +1,22 @@
+Description: Fix unicode string in Python 3.2
+Author: Thomas Goirand <zigo@debian.org>
+Forwarded: no
+Last-Update: 2014-07-13
+
+--- python-oslo.i18n-0.1.0.orig/tests/test_public_api.py
++++ python-oslo.i18n-0.1.0/tests/test_public_api.py
+@@ -16,6 +16,8 @@ import unittest
+ 
+ import mock
+ 
++import six
++
+ from oslo import i18n
+ from oslo.i18n import _lazy
+ 
+@@ -41,4 +43,4 @@ class PublicAPITest(unittest.TestCase):
+             i18n.enable_lazy(original)
+ 
+     def test_translate(self):
+-        i18n.translate(u'string')
++        i18n.translate(six.u('string'))
