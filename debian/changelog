@@ -1,3 +1,9 @@
+python-oslo.i18n (0.1.0-2) unstable; urgency=medium
+
+  * Added some missing build-depends.
+
+ -- Thomas Goirand <zigo@debian.org>  Sun, 13 Jul 2014 00:17:26 +0800
+
 python-oslo.i18n (0.1.0-1) unstable; urgency=medium
 
   * Initial release. (Closes: #754547)
