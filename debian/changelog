@@ -3,6 +3,7 @@ python-oslo.i18n (0.2.0-1) experimental; urgency=medium
   * New upstream release.
   * Using python3 in tests.
   * Added python 3.2 fix in tests/test_fixture.py.
+  * Added build-conflicts: python-oslo.i18n, python3-oslo.i18n.
 
  -- Thomas Goirand <zigo@debian.org>  Fri, 05 Sep 2014 11:28:46 +0800
 
