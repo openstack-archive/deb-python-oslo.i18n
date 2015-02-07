@@ -3,18 +3,20 @@ Author: Thomas Goirand <zigo@debian.org>
 Forwarded: no
 Last-Update: 2014-07-13
 
---- python-oslo.i18n-0.1.0.orig/tests/test_public_api.py
-+++ python-oslo.i18n-0.1.0/tests/test_public_api.py
-@@ -16,6 +16,8 @@ import unittest
+Index: python-oslo.i18n/tests/test_public_api.py
+===================================================================
+--- python-oslo.i18n.orig/tests/test_public_api.py	2015-02-07 21:09:45.000000000 +0100
++++ python-oslo.i18n/tests/test_public_api.py	2015-02-07 21:16:04.000000000 +0100
+@@ -16,6 +16,8 @@
  
  import mock
  
 +import six
 +
  from oslo import i18n
- from oslo.i18n import _lazy
+ from oslo_i18n import _lazy
  
-@@ -41,4 +43,4 @@ class PublicAPITest(unittest.TestCase):
+@@ -41,4 +43,4 @@
              i18n.enable_lazy(original)
  
      def test_translate(self):
