@@ -23,10 +23,10 @@ from oslotest import base as test_base
 from oslotest import moxstubout
 import six
 
-from oslo.i18n import _factory
-from oslo.i18n import _gettextutils
-from oslo.i18n import _lazy
-from oslo.i18n import _message
+from oslo_i18n import _factory
+from oslo_i18n import _gettextutils
+from oslo_i18n import _lazy
+from oslo_i18n import _message
 
 
 LOG = logging.getLogger(__name__)
@@ -41,7 +41,7 @@ class GettextTest(test_base.BaseTestCase):
         self.mox = moxfixture.mox
         # remember so we can reset to it later in case it changes
         self._USE_LAZY = _lazy.USE_LAZY
-        self.t = _factory.TranslatorFactory('oslo.i18n.test')
+        self.t = _factory.TranslatorFactory('oslo_i18n.test')
 
     def tearDown(self):
         # reset to value before test
@@ -92,7 +92,8 @@ class GettextTest(test_base.BaseTestCase):
                        _mock_locale_identifiers)
 
         # Only the languages available for a specific translation domain
-        def _mock_gettext_find(domain, localedir=None, languages=[], all=0):
+        def _mock_gettext_find(domain, localedir=None, languages=None, all=0):
+            languages = languages or []
             if domain == 'domain_1':
                 return 'translation-file' if any(x in ['zh', 'es', 'fil']
                                                  for x in languages) else None
@@ -101,6 +102,9 @@ class GettextTest(test_base.BaseTestCase):
                                                  for x in languages) else None
             return None
         self.stubs.Set(gettext, 'find', _mock_gettext_find)
+
+        # Ensure that no domains are cached
+        _gettextutils._AVAILABLE_LANGUAGES = {}
 
         # en_US should always be available no matter the domain
         # and it should also always be the first element since order matters

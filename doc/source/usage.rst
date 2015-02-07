@@ -16,16 +16,16 @@ Creating an Integration Module
 
 To use oslo.i18n in a project, you will need to create a small
 integration module to hold an instance of
-:class:`~oslo.i18n.TranslatorFactory` and references to
+:class:`~oslo_i18n.TranslatorFactory` and references to
 the marker functions the factory creates.
 
 ::
 
     # app/i18n.py
 
-	from oslo import i18n
+    import oslo_i18n
 
-    _translators = i18n.TranslatorFactory(domain='myapp')
+    _translators = oslo_i18n.TranslatorFactory(domain='myapp')
 
     # The primary translation function using the well-known name "_"
     _ = _translators.primary
@@ -43,7 +43,7 @@ the marker functions the factory creates.
 Then, in the rest of your code, use the appropriate marker function
 for each message:
 
-::
+.. code-block:: python
 
     from myapp.i18n import _, _LW
 
@@ -53,16 +53,43 @@ for each message:
 
     # ...
 
-    raise RuntimeError(_('exception message'))
+    try:
+
+        # ...
+
+    except AnException1:
+
+        # Log only
+        LOG.exception(_LE('exception message'))
+
+    except AnException2:
+
+        # Raise only
+        raise RuntimeError(_('exception message'))
+
+    else:
+
+        # Log and Raise
+        msg = _('Unexpected error message')
+        LOG.exception(msg)
+        raise RuntimeError(msg)
+
+.. note::
+
+   Libraries probably do not want to expose the new integration module
+   as part of their public API, so rather than naming it
+   ``mylib.i18n`` it should be called ``mylib._i18n`` to indicate that
+   it is a private implementation detail, and not meant to be used
+   outside of the library's own code.
 
 .. warning::
 
-   The old method of installing a version of ``_()`` in the builtins
-   namespace is deprecated. Modifying the global namespace affects
-   libraries as well as the application, so it may interfere with
-   proper message catalog lookups. Calls to
-   :func:`gettextutils.install` should be replaced with the
-   application or library integration module described here.
+    The old method of installing a version of ``_()`` in the builtins
+    namespace is deprecated. Modifying the global namespace affects
+    libraries as well as the application, so it may interfere with
+    proper message catalog lookups. Calls to
+    :func:`gettextutils.install` should be replaced with the
+    application or library integration module described here.
 
 Handling hacking Objections to Imports
 ======================================
@@ -73,16 +100,16 @@ directly. For example:
 
 ::
 
-  # WRONG
-  from foo import bar
+    # WRONG
+    from foo import bar
 
-  bar()
+    bar()
 
-  # RIGHT
+    # RIGHT
 
-  import foo
+    import foo
 
-  foo.bar()
+    foo.bar()
 
 The linting tool hacking_ will typically complain about importing
 names from within modules. It is acceptable to bypass this for the
@@ -94,10 +121,10 @@ for imports from the integration module, add an import exception to
 
 For example::
 
-  # tox.ini
-  [hacking]
-  import_exceptions =
-    app.i18n
+    # tox.ini
+    [hacking]
+    import_exceptions =
+      app.i18n
 
 .. _hacking: https://pypi.python.org/pypi/hacking
 
@@ -124,14 +151,14 @@ To enable lazy translation, call :func:`enable_lazy`.
 
 ::
 
-    from oslo import i18n
+    import oslo_i18n
 
-    i18n.enable_lazy()
+    oslo_i18n.enable_lazy()
 
 Translating Messages
 ====================
 
-Use :func:`~oslo.i18n.translate` to translate strings to
+Use :func:`~oslo_i18n.translate` to translate strings to
 a specific locale. :func:`translate` handles delayed translation and
 strings that have already been translated immediately. It should be
 used at the point where the locale to be used is known, which is often
@@ -140,9 +167,9 @@ emitted.
 
 ::
 
-    from oslo import i18n
+    import oslo_i18n
 
-    trans_msg = i18n.translate(msg, desired_locale=my_locale)
+    trans_msg = oslo_i18n.translate(msg, desired_locale=my_locale)
 
 if desired_locale is not specified then the default locale is used.
 
@@ -151,14 +178,14 @@ Available Languages
 
 Only the languages that have translations provided are available for
 translation. To determine which languages are available the
-:func:`~oslo.i18n.get_available_languages` is provided. Since different languages
+:func:`~oslo_i18n.get_available_languages` is provided. Since different languages
 can be installed for each domain, the domain must be specified.
 
 ::
 
-      from oslo import i18n
+    import oslo_i18n
 
-      avail_lang = i18n.get_available_languages('myapp')
+    avail_lang = oslo_i18n.get_available_languages('myapp')
 
 .. seealso::
 
