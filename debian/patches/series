@@ -1,2 +1,3 @@
 fix-unicode-string-for-python3.2.patch
 fix-python3.2-unicode.patch
+do-not-run-topleve-tests.patch
