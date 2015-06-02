@@ -3,6 +3,10 @@ python-oslo.i18n (1.7.0-1) UNRELEASED; urgency=medium
   * Team upload.
   * New upstream release:
     - d/control: Align with upstream version requirements.
+  * Re-align with Ubuntu:
+    - d/control: Add Breaks/Replaces for Ubuntu *oslo-i18n packages.
+    - d/control: Add transitional packages for *oslo-i18n to support
+      upgrades.
 
  -- James Page <james.page@ubuntu.com>  Tue, 02 Jun 2015 17:05:35 +0100
 

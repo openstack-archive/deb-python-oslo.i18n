@@ -37,6 +37,8 @@ Depends: python-babel,
          python-six (>= 1.9.0),
          ${misc:Depends},
          ${python:Depends},
+Breaks: python-oslo-i18n (<< 1.7.0-1~)
+Replaces: python-oslo-i18n (<< 1.7.0-1~)
 Description: Oslo Internationalization Utilities - Python 2.x
  The oslo.i18n library contain utilities for working with internationalization
  (i18n) features, especially translation for text strings in an application or
@@ -51,6 +53,8 @@ Depends: python3-babel,
          python3-six (>= 1.9.0),
          ${misc:Depends},
          ${python3:Depends},
+Breaks: python3-oslo-i18n (<< 1.7.0-1~)
+Replaces: python3-oslo-i18n (<< 1.7.0-1~)
 Description: Oslo Internationalization Utilities - Python 3.x
  The oslo.i18n library contain utilities for working with internationalization
  (i18n) features, especially translation for text strings in an application or
@@ -68,4 +72,28 @@ Description: Oslo Internationalization Utilities - doc
  (i18n) features, especially translation for text strings in an application or
  library.
  .
-  This package contains the documentation.
+ This package contains the documentation.
+
+Package: python-oslo-i18n
+Section: oldlibs
+Architecture: all
+Depends: python-oslo.i18n,
+         ${misc:Depends},
+Description: transitional dummy package for python-oslo-i18n.
+ This transtional package is safe to remove.
+
+Package: python-oslo-i18n-doc
+Section: oldlibs
+Architecture: all
+Depends: python-oslo.i18n-doc,
+         ${misc:Depends},
+Description: transitional dummy package for python-oslo-i18n-doc.
+ This transtional package is safe to remove.
+
+Package: python3-oslo-i18n
+Section: oldlibs
+Architecture: all
+Depends: python3-oslo.i18n,
+         ${misc:Depends},
+Description: transitional dummy package for python3-oslo-i18n.
+ This transtional package is safe to remove.
