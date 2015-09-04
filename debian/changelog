@@ -1,4 +1,4 @@
-python-oslo.i18n (1.7.0-3) UNRELEASED; urgency=medium
+python-oslo.i18n (2.5.0-1) experimental; urgency=medium
 
   [ James Page ]
   * Drop python-pip from BD's, not required.
@@ -6,6 +6,7 @@ python-oslo.i18n (1.7.0-3) UNRELEASED; urgency=medium
 
   [ Thomas Goirand ]
   * Setting LANG=en_US.UTF-8 to avoid FTBFS (Closes: #795681).
+  * New upstream release.
 
  -- Thomas Goirand <zigo@debian.org>  Tue, 25 Aug 2015 22:50:33 +0200
 

@@ -7,11 +7,11 @@ Build-Depends: debhelper (>= 9),
                dh-python,
                openstack-pkg-tools,
                python-all,
-               python-pbr,
+               python-pbr (>= 1.6),
                python-setuptools,
                python-sphinx,
                python3-all,
-               python3-pbr,
+               python3-pbr (>= 1.6),
                python3-setuptools,
 Build-Depends-Indep: python-babel,
                      python-coverage,
@@ -32,7 +32,7 @@ Homepage: https://github.com/openstack/oslo.i18n
 Package: python-oslo.i18n
 Architecture: all
 Depends: python-babel,
-         python-pbr,
+         python-pbr (>= 1.6),
          python-six (>= 1.9.0),
          ${misc:Depends},
          ${python:Depends},
@@ -48,7 +48,7 @@ Description: Oslo Internationalization Utilities - Python 2.x
 Package: python3-oslo.i18n
 Architecture: all
 Depends: python3-babel,
-         python3-pbr,
+         python3-pbr (>= 1.6),
          python3-six (>= 1.9.0),
          ${misc:Depends},
          ${python3:Depends},
@@ -75,24 +75,27 @@ Description: Oslo Internationalization Utilities - doc
 
 Package: python-oslo-i18n
 Section: oldlibs
+Priority: extra
 Architecture: all
 Depends: python-oslo.i18n,
          ${misc:Depends},
-Description: transitional dummy package for python-oslo-i18n.
+Description: transitional dummy package for python-oslo-i18n
  This transitional package is safe to remove.
 
 Package: python-oslo-i18n-doc
 Section: oldlibs
+Priority: extra
 Architecture: all
 Depends: python-oslo.i18n-doc,
          ${misc:Depends},
-Description: transitional dummy package for python-oslo-i18n-doc.
+Description: transitional dummy package for python-oslo-i18n-doc
  This transitional package is safe to remove.
 
 Package: python3-oslo-i18n
 Section: oldlibs
+Priority: extra
 Architecture: all
 Depends: python3-oslo.i18n,
          ${misc:Depends},
-Description: transitional dummy package for python3-oslo-i18n.
+Description: transitional dummy package for python3-oslo-i18n
  This transitional package is safe to remove.
