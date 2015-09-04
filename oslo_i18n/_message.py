@@ -19,12 +19,19 @@
 import copy
 import gettext
 import locale
+import logging
 import os
 
 import six
 
 from oslo_i18n import _locale
 from oslo_i18n import _translate
+
+# magic gettext number to separate context from message
+CONTEXT_SEPARATOR = "\x04"
+
+
+LOG = logging.getLogger(__name__)
 
 
 class Message(six.text_type):
@@ -36,7 +43,8 @@ class Message(six.text_type):
     """
 
     def __new__(cls, msgid, msgtext=None, params=None,
-                domain='oslo', *args):
+                domain='oslo', has_contextual_form=False,
+                has_plural_form=False, *args):
         """Create a new Message object.
 
         In order for translation to work gettext requires a message ID, this
@@ -55,6 +63,8 @@ class Message(six.text_type):
         msg.msgid = msgid
         msg.domain = domain
         msg.params = params
+        msg.has_contextual_form = has_contextual_form
+        msg.has_plural_form = has_plural_form
         return msg
 
     def translate(self, desired_locale=None):
@@ -69,7 +79,10 @@ class Message(six.text_type):
 
         translated_message = Message._translate_msgid(self.msgid,
                                                       self.domain,
-                                                      desired_locale)
+                                                      desired_locale,
+                                                      self.has_contextual_form,
+                                                      self.has_plural_form)
+
         if self.params is None:
             # No need for more translation
             return translated_message
@@ -81,12 +94,11 @@ class Message(six.text_type):
         translated_params = _translate.translate_args(self.params,
                                                       desired_locale)
 
-        translated_message = translated_message % translated_params
-
-        return translated_message
+        return self._safe_translate(translated_message, translated_params)
 
     @staticmethod
-    def _translate_msgid(msgid, domain, desired_locale=None):
+    def _translate_msgid(msgid, domain, desired_locale=None,
+                         has_contextual_form=False, has_plural_form=False):
         if not desired_locale:
             system_locale = locale.getdefaultlocale()
             # If the system locale is not available to the runtime use English
@@ -99,9 +111,53 @@ class Message(six.text_type):
                                    localedir=locale_dir,
                                    languages=[desired_locale],
                                    fallback=True)
-        translator = lang.gettext if six.PY3 else lang.ugettext
 
-        translated_message = translator(msgid)
+        if not has_contextual_form and not has_plural_form:
+            # This is the most common case, so check it first.
+            translator = lang.gettext if six.PY3 else lang.ugettext
+            translated_message = translator(msgid)
+
+        elif has_contextual_form and has_plural_form:
+            # Reserved for contextual and plural translation function,
+            # which is not yet implemented.
+            raise ValueError("Unimplemented.")
+
+        elif has_contextual_form:
+            (msgctx, msgtxt) = msgid
+            translator = lang.gettext if six.PY3 else lang.ugettext
+
+            msg_with_ctx = "%s%s%s" % (msgctx, CONTEXT_SEPARATOR, msgtxt)
+            translated_message = translator(msg_with_ctx)
+
+            if CONTEXT_SEPARATOR in translated_message:
+                # Translation not found, use the original text
+                translated_message = msgtxt
+
+        elif has_plural_form:
+            (msgsingle, msgplural, msgcount) = msgid
+            translator = lang.ngettext if six.PY3 else lang.ungettext
+            translated_message = translator(msgsingle, msgplural, msgcount)
+
+        return translated_message
+
+    def _safe_translate(self, translated_message, translated_params):
+        try:
+            translated_message = translated_message % translated_params
+        except (KeyError, TypeError) as err:
+            # KeyError for parameters named in the translated_message
+            # but not found in translated_params and TypeError for
+            # type strings that do not match the type of the
+            # parameter.
+            #
+            # Log the error translating the message and use the
+            # original message string so the translator's bad message
+            # catalog doesn't break the caller.
+            LOG.debug(
+                (u'Failed to insert replacement values into translated '
+                 u'message %s (Original: %r): %s'),
+                translated_message, self.msgid, err)
+            translated_message = self.msgid % translated_params
+
         return translated_message
 
     def __mod__(self, other):
@@ -109,7 +165,7 @@ class Message(six.text_type):
         # by the parent class (i.e. unicode()), the only thing  we do here is
         # save the original msgid and the parameters in case of a translation
         params = self._sanitize_mod_params(other)
-        unicode_mod = super(Message, self).__mod__(params)
+        unicode_mod = self._safe_translate(six.text_type(self), params)
         modded = Message(self.msgid,
                          msgtext=unicode_mod,
                          params=params,

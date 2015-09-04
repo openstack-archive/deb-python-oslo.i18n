@@ -2,15 +2,48 @@
  Guidelines for Use In OpenStack
 =================================
 
-Text messages the user sees via exceptions or API calls should be
-translated using
-:py:attr:`TranslatorFactory.primary <oslo_i18n.TranslatorFactory.primary>`, which should
-be installed as ``_()`` in the integration module.
+The OpenStack I18N team has a limited capacity to translate messages,
+so we want to make their work as effective as possible by identifying
+the most useful text for them to translate.  All text messages *the
+user sees* via exceptions or API calls should be marked for
+translation. However, some exceptions are used internally to signal
+error conditions between modules and are not intended to be presented
+to the user. Those do not need to be translated.
 
 .. seealso::
 
    * :doc:`usage`
    * :doc:`api`
+
+Gettext Contextual Form and Plural Form
+=======================================
+
+Sometimes under different contexts, the same word should be
+translated into different phrases using
+:py:attr:`TranslatorFactory.contextual_form <oslo_i18n.TranslatorFactory.contextual_form>`.
+
+And recommend the following code to use contextual form::
+
+  # The contextual translation function using the name "_C"
+  _C = _translators.contextual_form
+
+  ...
+  msg = _C('context', 'string')
+
+In some languages, sometimes the translated strings are different
+with different item counts using
+:py:attr:`TranslatorFactory.plural_form <oslo_i18n.TranslatorFactory.plural_form>`
+
+And recommend the following code to use plural form::
+
+  # The plural translation function using the name "_P"
+  _P = _translators.plural_form
+
+  ...
+  msg = _P('single', 'plural', count)
+
+The contextual form and plural form are used only when needed.
+By default, the translation should use the ``_()``.
 
 Log Translation
 ===============

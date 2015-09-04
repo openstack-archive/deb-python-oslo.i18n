@@ -1,30 +1,30 @@
-# Korean (South Korea) translations for oslo.i18n.
+# Spanish translations for oslo.i18n.
 # Copyright (C) 2015 ORGANIZATION
 # This file is distributed under the same license as the oslo.i18n project.
 #
 # Translators:
-# Sungjin Kang <potopro@gmail.com>, 2014
+# Adriana Chisco Landazábal <achisco94@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version:  oslo.i18n\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-08-04 06:16+0000\n"
-"PO-Revision-Date: 2014-09-24 16:32+0000\n"
-"Last-Translator: Sungjin Kang <potopro@gmail.com>\n"
-"Language-Team: Korean (Korea) (http://www.transifex.com/openstack/osloi18n/"
-"language/ko_KR/)\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"PO-Revision-Date: 2015-06-22 21:03+0000\n"
+"Last-Translator: Adriana Chisco Landazábal <achisco94@gmail.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/openstack/osloi18n/language/"
+"es/)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.0\n"
 
 msgid "Message objects do not support addition."
-msgstr "메시지 객체는 추가 지원을하지 않습니다."
+msgstr "Objectos de mensaje no soportan adición."
 
 msgid ""
 "Message objects do not support str() because they may contain non-ascii "
 "characters. Please use unicode() or translate() instead."
 msgstr ""
-"Non-ascii 문자를 포함할 수 있기에 메시지 객체는 str()를 지원하지 않습니다. 대"
-"신 unicode()나 translate()를 사용하십시오."
+"Los objetos de mensaje no soportan str() porque pueden contener caracteres "
+"no-ASCII. Por favor utilice a cambio unicode() o translate()."
