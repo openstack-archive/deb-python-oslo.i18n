@@ -41,7 +41,10 @@ override_dh_clean:
 	rm -rf build
 
 override_dh_sphinxdoc:
-	sphinx-build -b html doc/source debian/python-oslo.i18n-doc/usr/share/doc/python-oslo.i18n-doc/html
+	set -e ; if ! sphinx-build -b html doc/source debian/python-oslo.i18n-doc/usr/share/doc/python-oslo.i18n-doc/html ; then \
+		cat /tmp/sphinx-err-* ; \
+		exit 1 ; \
+	fi
 	dh_sphinxdoc -O--buildsystem=python_distutils
 
 # Commands not to run
