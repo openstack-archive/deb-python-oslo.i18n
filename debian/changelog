@@ -1,3 +1,9 @@
+python-oslo.i18n (3.1.0-1) experimental; urgency=medium
+
+  * New upstream release.
+
+ -- Thomas Goirand <zigo@debian.org>  Wed, 13 Jan 2016 01:20:32 +0000
+
 python-oslo.i18n (3.0.0-1) experimental; urgency=medium
 
   * New upstream release.
