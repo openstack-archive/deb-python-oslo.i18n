@@ -1,6 +1,7 @@
 python-oslo.i18n (3.3.0-1) UNRELEASED; urgency=medium
 
   * New upstream release.
+  * d/control: Align depends with upstream.
 
  -- David Della Vecchia <ddv@canonical.com>  Wed, 24 Feb 2016 11:16:13 -0500
 
