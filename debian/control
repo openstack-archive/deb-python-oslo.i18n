@@ -29,8 +29,8 @@ Build-Depends-Indep: python-babel,
                      subunit,
                      testrepository,
 Standards-Version: 3.9.6
-Vcs-Browser: http://anonscm.debian.org/gitweb/?p=openstack/python-oslo.i18n.git
-Vcs-Git: git://anonscm.debian.org/openstack/python-oslo.i18n.git
+Vcs-Browser: https://anonscm.debian.org/cgit/openstack/python-oslo.i18n.git/
+Vcs-Git: https://anonscm.debian.org/git/openstack/python-oslo.i18n.git
 Homepage: https://github.com/openstack/oslo.i18n
 
 Package: python-oslo.i18n
