@@ -8,6 +8,7 @@ python-oslo.i18n (3.4.0-1) experimental; urgency=medium
 
   [ Thomas Goirand ]
   * New upstream release.
+  * Standards-Version: 3.9.7 (no change).
 
  -- Thomas Goirand <zigo@debian.org>  Wed, 02 Mar 2016 12:31:47 +0000
 
