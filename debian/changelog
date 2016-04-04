@@ -1,3 +1,9 @@
+python-oslo.i18n (3.5.0-2) unstable; urgency=medium
+
+  * Uploading to Unstable.
+
+ -- Thomas Goirand <zigo@debian.org>  Mon, 04 Apr 2016 07:43:55 +0000
+
 python-oslo.i18n (3.5.0-1) experimental; urgency=medium
 
   * New upstream release.
