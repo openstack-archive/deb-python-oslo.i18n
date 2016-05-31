@@ -8,6 +8,7 @@ python-oslo.i18n (3.6.0-1) UNRELEASED; urgency=medium
   [ Corey Bryant ]
   * New upstream release.
   * d/gbp.conf: Update branch for Newton.
+  * d/control: Align (Build-)Depends with upstream.
 
  -- Corey Bryant <corey.bryant@canonical.com>  Tue, 31 May 2016 16:42:59 -0400
 
