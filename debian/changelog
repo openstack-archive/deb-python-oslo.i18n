@@ -1,9 +1,13 @@
 python-oslo.i18n (3.7.0-1) UNRELEASED; urgency=medium
 
+  [ David Della Vecchia ]
   * New upstream release.
   * d/control: Align (build-)depends with upstream.
 
- -- David Della Vecchia <ddv@canonical.com>  Thu, 30 Jun 2016 10:50:54 -0400
+  [ Corey Bryant ]
+  * d/control: Align python-oslo.config BD with upstream.
+
+ -- Corey Bryant <corey.bryant@canonical.com>  Thu, 30 Jun 2016 14:01:42 -0400
 
 python-oslo.i18n (3.6.0-1) experimental; urgency=medium
 
