@@ -78,30 +78,3 @@ Description: Oslo Internationalization Utilities - doc
  library.
  .
  This package contains the documentation.
-
-Package: python-oslo-i18n
-Section: oldlibs
-Priority: extra
-Architecture: all
-Depends: python-oslo.i18n,
-         ${misc:Depends},
-Description: transitional dummy package for python-oslo-i18n
- This transitional package to python-oslo.i18n is safe to remove.
-
-Package: python-oslo-i18n-doc
-Section: oldlibs
-Priority: extra
-Architecture: all
-Depends: python-oslo.i18n-doc,
-         ${misc:Depends},
-Description: transitional dummy package for python-oslo-i18n-doc
- This transitional package to python-oslo.i18n-doc is safe to remove.
-
-Package: python3-oslo-i18n
-Section: oldlibs
-Priority: extra
-Architecture: all
-Depends: python3-oslo.i18n,
-         ${misc:Depends},
-Description: transitional dummy package for python3-oslo-i18n
- This transitional package to python3-oslo.i18n is safe to remove.

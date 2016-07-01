@@ -1,4 +1,4 @@
-python-oslo.i18n (3.7.0-1) UNRELEASED; urgency=medium
+python-oslo.i18n (3.7.0-1) experimental; urgency=medium
 
   [ David Della Vecchia ]
   * New upstream release.
@@ -7,7 +7,10 @@ python-oslo.i18n (3.7.0-1) UNRELEASED; urgency=medium
   [ Corey Bryant ]
   * d/control: Align python-oslo.config BD with upstream.
 
- -- Corey Bryant <corey.bryant@canonical.com>  Thu, 30 Jun 2016 14:01:42 -0400
+  [ Thomas Goirand ]
+  * Drop python-oslo-* transition packages not needed since Xenial.
+
+ -- Thomas Goirand <zigo@debian.org>  Fri, 01 Jul 2016 14:48:09 +0000
 
 python-oslo.i18n (3.6.0-1) experimental; urgency=medium
 
