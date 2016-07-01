@@ -9,6 +9,7 @@ python-oslo.i18n (3.7.0-1) experimental; urgency=medium
 
   [ Thomas Goirand ]
   * Drop python-oslo-* transition packages not needed since Xenial.
+  * Switch to pkgos-dh_auto_{test,install}.
 
  -- Thomas Goirand <zigo@debian.org>  Fri, 01 Jul 2016 14:48:09 +0000
 
