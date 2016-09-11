@@ -1,3 +1,15 @@
+python-oslo.i18n (3.9.0-1) experimental; urgency=medium
+
+  [ Corey Bryant ]
+  * New upstream release.
+  * d/control: Align (build-)depends with upstream.
+
+  [ James Page ]
+  * New upstream release.
+  * Align Build-Depends with upstream.
+
+ -- Corey Bryant <corey.bryant@canonical.com>  Thu, 25 Aug 2016 08:46:47 +0100
+
 python-oslo.i18n (3.7.0-1) experimental; urgency=medium
 
   [ David Della Vecchia ]
