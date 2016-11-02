@@ -1,0 +1,9 @@
+Code-Review+2: Gevorg Davoian <gdavoian@mirantis.com>
+Code-Review+1: Carl <cai.hui@zte.com.cn>
+Workflow+1: Joshua Harlow <jxharlow@godaddy.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Tue, 01 Nov 2016 20:01:03 +0000
+Reviewed-on: https://review.openstack.org/392100
+Project: openstack/deb-python-oslo.i18n
+Branch: refs/heads/master
