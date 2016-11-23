@@ -1,3 +1,9 @@
+python-oslo.i18n (3.9.0-4) UNRELEASED; urgency=medium
+
+  * Bumped debhelper compat version to 10
+
+ -- Ondřej Nový <onovy@debian.org>  Thu, 24 Nov 2016 00:09:08 +0100
+
 python-oslo.i18n (3.9.0-3) unstable; urgency=medium
 
   [ Ondřej Nový ]
