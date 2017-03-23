@@ -1,0 +1,15 @@
+Code-Review+1: Matt Riedemann <mriedem.os@gmail.com>
+Code-Review+2: Ben Nemec <openstack@nemebean.com>
+Code-Review+1: Ian Y. Choi <ianyrchoi@gmail.com>
+Code-Review+1: Yuval Brik <yuval@brik.org.il>
+Code-Review+1: Nicolas Bock <nicolasbock@gmail.com>
+Code-Review+1: Sean McGinnis <sean.mcginnis@gmail.com>
+Code-Review+2: ChangBo Guo(gcb) <glongwave@gmail.com>
+Workflow+1: ChangBo Guo(gcb) <glongwave@gmail.com>
+Code-Review+1: chenying <ying.chen@huawei.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Wed, 22 Mar 2017 11:38:51 +0000
+Reviewed-on: https://review.openstack.org/446762
+Project: openstack/deb-python-oslo.i18n
+Branch: refs/heads/master
